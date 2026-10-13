@@ -216,7 +216,38 @@ document.addEventListener('DOMContentLoaded', () => {
         startModal.classList.remove('active');
         startGame();
     });
+    btnViewRanking.addEventListener('click', () => {
+        fetchRanking();
+        finalScoreValue.textContent='---';
+        saveStatusMsg.textContent ='';
+        startModal.classList.revome('active');
+        gameoverModal.classList.add('active');
+    });
+    btnRestart.addEventListener('click', () => {
+        gameoverModal.classList.remove('active');
+        if(!currentPlayer) {
+            startModal.classList.remove('active');
+            playerInput.focus();
+        } else{
+            startGame();
+        }
+    });
+    btnRestart.addEventListener('click', () => {
+        gameoverModal.classList.remove('active');
+        resetElements();
+        startModal.classList.add('active');
+        playerInput.value ='';
+        playerInput.focus();
+    });
 
+            document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space' || e.key === ' ' || e.code ==='arrowUp' || e.code ==='KeyW'){
+            if(isPlaying){
+                e.preventDefault();
+                jump();
+            }
+        }
+    });
 
 
 
